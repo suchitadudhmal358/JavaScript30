@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Array Cardio 2 - Methods of Array</title>
+  </head>
+  <body>
+    <script>
+      const people = [
+        { name: "Wes", year: 1988 },
+        { name: "Kait", year: 1986 },
+        { name: "Irv", year: 1970 },
+        { name: "Lux", year: 2015 },
+      ];
+
+      const comments = [
+        { text: "Love this!", id: 523423 },
+        { text: "Super good", id: 823423 },
+        { text: "You are the best", id: 2039842 },
+        { text: "Ramen is my fav food ever", id: 123523 },
+        { text: "Nice Nice Nice!", id: 542328 },
+      ];
+
+      //Other methods of Array
+      // task1- some() //at least one person is 19 or older
+      const isAdult = people.some((person) => {
+        const currenYear = new Date().getFullYear();
+        return currenYear - person.year >= 19;
+      });
+      console.log(isAdult);
+      //   console.log({ isAdult });
+
+      // task2- every() //all persons should 19 or older
+      const allAdult = people.every((person) => {
+        const currenYear = new Date().getFullYear();
+        return currenYear - person.year >= 19;
+      });
+      console.log(allAdult);
+      //   console.log({ allAdult });
+
+      // task 3 - find() - find comment by its id
+      const comment = comments.find((comment) => comment.id === 823423);
+      console.log(comment);
+
+      // task 4 - findIndex() - find index of comment by its id
+      const index = comments.findIndex((comment) => comment.id === 823423);
+      console.log(index);
+
+      // task 5 - delete comment by its id using splice() - its mutable
+      //   const deleteComment = comments.splice(index, 1);
+      //   console.table(comments);
+
+      // task 6 - delete comment by its id using slice()& spread operator - its immutable
+      const deleteComment = [
+        ...comments.slice(0, index),
+        ...comments.slice(index + 1),
+      ];
+      console.table(deleteComment);
+    </script>
+  </body>
+</html>
